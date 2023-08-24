@@ -65,7 +65,6 @@ export function move(bounds: Bounds, reference: Nullable<SimpleNode>): Nullable<
 }
 
 export function clear(bounds: Bounds): Nullable<SimpleNode> {
-  let parent = bounds.parentElement();
   let first = bounds.firstNode();
   let last = bounds.lastNode();
 
@@ -75,7 +74,7 @@ export function clear(bounds: Bounds): Nullable<SimpleNode> {
   while (true) {
     let next = current.nextSibling;
 
-    parent.removeChild(current);
+    current.parentNode?.removeChild(current);
 
     if (current === last) {
       return next;
